@@ -58,7 +58,14 @@ fn main() {
             .as_object()
             .unwrap_or(&empty_map);
 
-        let path = data.get("path").expect("Should have a path attribute");
+        let path = {
+            if let Some(path) = data.get("path") {
+                path
+            } else {
+                println!("{line}");
+                continue;
+            }
+        };
 
         let drv_path: String = {
             if path.is_object() {
