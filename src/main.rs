@@ -29,8 +29,8 @@ fn main() {
 
         let data: Value = match serde_json::from_str(trim) {
             Ok(e) => e,
-            Err(e) => {
-                eprintln!("Failed to parse serde: {e}");
+            Err(_) => {
+                // FIXME: Should print an error msg
                 println!("{line}");
                 continue;
             }
@@ -62,7 +62,6 @@ fn main() {
             if let Some(path) = data.get("path") {
                 path
             } else {
-                println!("{line}");
                 continue;
             }
         };
