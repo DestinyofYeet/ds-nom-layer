@@ -126,7 +126,5 @@ fn main() {
 
             println!("@nix {msg}");
         }
-
-        println!("{}", trim);
     }
 }
